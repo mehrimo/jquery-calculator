@@ -9,7 +9,7 @@ var equals = $('#equals');
 
 operator.on('click', function() {
   if ($(this).text() === 'C' || $(this).text() === '=' ) {
-      return;
+      console.log('C');
   } else {
     calcScreen.append($(this).html());
   }
@@ -17,12 +17,20 @@ operator.on('click', function() {
 
 //if clear on click. clear screen
 clear.on('click', function(){
-clear.empty();
+calcScreen.empty();
 });
 
-// if equals is click then eval()
-equals.on('click', function (){
-equals.eval();  
+equals.on('click',function () {
+try {
+  var answer = eval(calcScreen.text());
+  calcScreen.empty();
+  calcScreen.append(answer);
+} catch (e) {
+  calcScreen.empty();
+  calcScreen.append(ERROR);
+}
 });
+
+
 
 });
