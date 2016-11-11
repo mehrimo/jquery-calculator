@@ -27,7 +27,7 @@ try {
   calcScreen.append(answer);
 } catch (e) {
   calcScreen.empty();
-  calcScreen.append(ERROR);
+  calcScreen.append('ERROR');
 }
 });
 
